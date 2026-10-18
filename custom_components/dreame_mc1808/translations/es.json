@@ -28,5 +28,21 @@
       "already_configured": "La aspiradora ya estaba configurada.",
       "reconfigure_successful": "Reconfiguración correcta. La integración se recargará con la nueva configuración."
     }
+  },
+  "services": {
+    "update_connection": {
+      "name": "Actualizar conexión",
+      "description": "Actualiza la dirección IP (y opcionalmente el token) de la aspiradora, valida la conexión y recarga la integración. Útil en automatizaciones cuando el dispositivo recibe una nueva IP.",
+      "fields": {
+        "host": {
+          "name": "Host (dirección IP)",
+          "description": "Nueva dirección IP de la aspiradora."
+        },
+        "token": {
+          "name": "Token",
+          "description": "Nuevo token miIO de 32 caracteres. Omitir para conservar el token actual."
+        }
+      }
+    }
   }
 }
