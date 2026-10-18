@@ -88,6 +88,12 @@ class DreameVacuumCoordinator(DataUpdateCoordinator[DreameStatus]):
             return await self.hass.async_add_executor_job(self.device.status)
         except (DeviceException, OSError) as exc:
             raise UpdateFailed(f"Error communicating with vacuum: {exc}") from exc
+        except Exception as exc:
+            # Catch anything unexpected so HA shows a clean message instead of a raw traceback
+            _LOGGER.exception("Unexpected error while fetching vacuum status")
+            raise UpdateFailed(
+                f"Unexpected error fetching vacuum status: {exc}"
+            ) from exc
 
 
 # --- shared entity base ------------------------------------------------------
